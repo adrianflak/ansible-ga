@@ -25,6 +25,19 @@ jobs:
                 echo "${{secrets.VPS_SSH_KEY}}" > ~/.ssh/id_rsa
                 chmod 600 ~/.ssh/id_rsa
                 ssh-keyscan -H ${{secrets.VPS_HOST}} >> ~/.ssh/known_hosts
+
+            - name: 
+              run: |
+               ssh ${{secrets.VPS_USER}}@{{secrets.VPS_HOST}} 
+                cd ~            
+                if [ ! -d "ansible_ga/.git" ]; then
+                  git clone git@github.com:adrianflak/ansible_ga.git
+                else
+                  echo "Repozytorium istnieje, wykonuje git pull"
+                  cd ansible_ga
+                  git pull origin main
+                  cd ..
+                fi
             
             - name: Create Ansible inventory
               run: |
