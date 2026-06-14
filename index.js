@@ -1,0 +1,1 @@
+console.log("Deploy przez Github Action");
