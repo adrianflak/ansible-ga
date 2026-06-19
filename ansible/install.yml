@@ -6,7 +6,6 @@
   vars:
     packages:
       - podman
-      - podman-compose
       - nodejs
       - npm
 
