@@ -1,4 +1,4 @@
-name: Build and Deploy with Ansible
+name: Build and Deploy with Ansible1
 on:
   push:
     branches:
