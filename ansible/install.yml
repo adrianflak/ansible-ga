@@ -1,19 +1,17 @@
-- name: Docker, Node, Npm installation 
-  hosts: vps
-  become: yes
- 
-  tasks:
-    - name: Update dnf
-      ansible.builtin.dnf:
-        update_cache: yes
+---
+- name: Install packages
+  hosts: all
+  become: true
 
-    - name: Install required packages
+  vars:
+    packages:
+      - podman
+      - podman-compose
+      - nodejs
+      - npm
+
+  tasks:
+    - name: Install packages
       ansible.builtin.dnf:
-        name:
-           - docker-ce
-           - docker-ce-cli
-           - containerd.io
-           - docker-compose-plugin
-           - nodejs
-           - npm
+        name: "{{ packages }}"
         state: present
