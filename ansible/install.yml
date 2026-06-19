@@ -3,12 +3,12 @@
   become: yes
  
   tasks:
-    - name: Update apt 
-      ansible.builtin.apt:
+    - name: Update dnf
+      ansible.builtin.dnf:
         update_cache: yes
 
     - name: Install required packages
-      ansible.builtin.apt:
+      ansible.builtin.dnf:
         name:
           - docker.io 
           - docker-compose
